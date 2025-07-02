@@ -61,7 +61,6 @@ import {
   Search,
   ExternalLink,
 } from "lucide-react";
-import { Link as ScrollLink } from "react-scroll";
 
 // Enhanced Student Hub Component with better integration
 const StudentEngagementHub = () => {
@@ -1757,7 +1756,7 @@ const Home = () => {
               </span>
             </h2>
             <p className="text-2xl text-blue-200 max-w-4xl mx-auto leading-relaxed">
-              We've built the tools you actually need, based on feedback from
+              We have built the tools you actually need, based on feedback from
               500+ students
             </p>
           </motion.div>
@@ -1862,9 +1861,6 @@ const Home = () => {
       </section>
       {/* Enhanced Student Engagement Hub */}
       <StudentEngagementHub />
-      {/* Enhanced Student Testimonials */}
-      // Inside the Student Testimonials section, replace the current
-      implementation with this:
       {/* Enhanced Student Testimonials */}
       <section className="py-24 px-6 md:px-24 relative overflow-hidden">
         {/* Background elements */}
@@ -2025,7 +2021,7 @@ const Home = () => {
                     </div>
 
                     <blockquote className="text-gray-300 italic text-lg leading-relaxed mb-6 flex-1">
-                      "{testimonial.quote}"
+                      {`"${testimonial.quote}"`}
                     </blockquote>
 
                     <div className="flex items-center justify-between">
@@ -2180,7 +2176,7 @@ const Home = () => {
 
                   <p className="text-sm text-blue-300 mt-4 flex items-center justify-center gap-2">
                     <Check className="w-4 h-4 text-green-400" />
-                    We'll send you an exclusive invite when we launch
+                    We will send you an exclusive invite when we launch
                   </p>
                 </div>
               </div>
