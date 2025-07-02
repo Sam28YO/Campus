@@ -1937,7 +1937,7 @@ const Home = () => {
                   university: "Thapar University",
                   course: "Electronics Engineering",
                   quote:
-                    "The textbook exchange feature alone has saved me over ₹700 this semester. Why didn't this exist when I was a freshman?",
+                    "The textbook exchange feature alone has saved me over ₹700 this semester. Why did not this exist when I was a freshman?",
                   icon: <BookOpen className="w-6 h-6 text-indigo-400" />,
                   rating: 5,
                   avatar: "/placeholder.svg?height=60&width=60",
@@ -1947,7 +1947,7 @@ const Home = () => {
                   university: "IIT Delhi",
                   course: "Electrical Engineering",
                   quote:
-                    "The event discovery feature helped me find workshops I wouldn't have known about otherwise. My skills have improved dramatically!",
+                    "The event discovery feature helped me find workshops I would not have known about otherwise. My skills have improved dramatically!",
                   icon: <Calendar className="w-6 h-6 text-purple-400" />,
                   rating: 5,
                   avatar: "/placeholder.svg?height=60&width=60",
