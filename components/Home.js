@@ -60,7 +60,10 @@ import {
   Bell,
   Search,
   ExternalLink,
+  Beaker,
+  Calculator,
 } from "lucide-react";
+import { Link as ScrollLink } from "react-scroll";
 
 // Enhanced Student Hub Component with better integration
 const StudentEngagementHub = () => {
@@ -1514,6 +1517,7 @@ const Home = () => {
           className="absolute top-1/2 right-1/4 w-60 h-60 bg-cyan-500/4 rounded-full blur-2xl"
         />
       </div>
+
       {/* Enhanced floating icons */}
       <div className="fixed inset-0 overflow-hidden pointer-events-none z-0">
         {iconConfigs.map(
@@ -1552,6 +1556,7 @@ const Home = () => {
           )
         )}
       </div>
+
       {/* Enhanced Hero Section */}
       <section className="min-h-screen flex flex-col justify-center items-center px-6 md:px-24 relative">
         <motion.div style={{ y, opacity }} className="text-center space-y-8">
@@ -1634,6 +1639,7 @@ const Home = () => {
           <ChevronDown className="w-8 h-8 text-blue-400 opacity-70" />
         </motion.div>
       </section>
+
       {/* Enhanced Countdown Section */}
       <section className="py-24 px-6 md:px-24 relative">
         <div className="max-w-6xl mx-auto">
@@ -1739,6 +1745,7 @@ const Home = () => {
           </motion.div>
         </div>
       </section>
+
       {/* Enhanced Features Section */}
       <section className="py-24 px-6 md:px-24">
         <div className="max-w-7xl mx-auto">
@@ -1859,8 +1866,10 @@ const Home = () => {
           </div>
         </div>
       </section>
+
       {/* Enhanced Student Engagement Hub */}
       <StudentEngagementHub />
+
       {/* Enhanced Student Testimonials */}
       <section className="py-24 px-6 md:px-24 relative overflow-hidden">
         {/* Background elements */}
@@ -1892,21 +1901,26 @@ const Home = () => {
             </p>
           </motion.div>
 
-          {/* Carousel Container */}
-          <div className="relative overflow-hidden h-[400px]">
-            {/* Carousel Track */}
+          <div className="relative overflow-hidden">
             <motion.div
-              className="flex absolute top-0 left-0 h-full"
+              className="flex gap-6"
               animate={{
-                x: ["0%", "-100%", "-200%", "-300%", "0%"], // Loop through 4 slides (3 transitions)
+                x: [0, (-100 * 8) / 3 + "%"],
               }}
               transition={{
-                duration: 20,
-                ease: "linear",
-                repeat: Infinity,
+                x: {
+                  repeat: Infinity,
+                  repeatType: "loop",
+                  duration: 32,
+                  ease: "linear",
+                },
+              }}
+              onHoverStart={() => {}}
+              onHoverEnd={() => {}}
+              style={{
+                willChange: "transform",
               }}
             >
-              {/* Increased mock data for reviews */}
               {[
                 {
                   name: "Koshank",
@@ -1915,6 +1929,7 @@ const Home = () => {
                   quote:
                     "This app saved me so much time finding study groups and sharing notes. It's like LinkedIn but actually useful for students!",
                   icon: <GraduationCap className="w-6 h-6 text-blue-400" />,
+                  delay: 0.1,
                   rating: 5,
                   avatar: "/placeholder.svg?height=60&width=60",
                 },
@@ -1925,6 +1940,7 @@ const Home = () => {
                   quote:
                     "I found my perfect roommate through CampusConnect. We're both night owls who love indie music - match made in heaven!",
                   icon: <Building2 className="w-6 h-6 text-teal-400" />,
+                  delay: 0.2,
                   rating: 5,
                   avatar: "/placeholder.svg?height=60&width=60",
                 },
@@ -1933,69 +1949,197 @@ const Home = () => {
                   university: "Thapar University",
                   course: "Electronics Engineering",
                   quote:
-                    "The textbook exchange feature alone has saved me over ₹700 this semester. Why did not this exist when I was a freshman?",
+                    "The textbook exchange feature alone has saved me over ₹700 this semester. Why didn't this exist when I was a freshman?",
                   icon: <BookOpen className="w-6 h-6 text-indigo-400" />,
-                  rating: 5,
-                  avatar: "/placeholder.svg?height=60&width=60",
-                },
-                {
-                  name: "Aarav",
-                  university: "IIT Delhi",
-                  course: "Electrical Engineering",
-                  quote:
-                    "The event discovery feature helped me find workshops I would not have known about otherwise. My skills have improved dramatically!",
-                  icon: <Calendar className="w-6 h-6 text-purple-400" />,
+                  delay: 0.3,
                   rating: 5,
                   avatar: "/placeholder.svg?height=60&width=60",
                 },
                 {
                   name: "Priya",
-                  university: "IIM Bangalore",
-                  course: "MBA",
+                  university: "IIT Delhi",
+                  course: "Data Science",
                   quote:
-                    "As a grad student, the study group feature has been invaluable for case study preparation. Highly recommend!",
-                  icon: <Users className="w-6 h-6 text-green-400" />,
+                    "Finally found study partners who actually show up! The skill matching feature is brilliant - found people who complement my weaknesses.",
+                  icon: <Users className="w-6 h-6 text-purple-400" />,
+                  delay: 0.4,
                   rating: 5,
                   avatar: "/placeholder.svg?height=60&width=60",
                 },
                 {
-                  name: "Rohan",
+                  name: "Arjun",
                   university: "BITS Pilani",
+                  course: "Software Engineering",
+                  quote:
+                    "The project collaboration feature helped me build an amazing portfolio. Got three internship offers thanks to connections made here!",
+                  icon: <Code className="w-6 h-6 text-green-400" />,
+                  delay: 0.5,
+                  rating: 5,
+                  avatar: "/placeholder.svg?height=60&width=60",
+                },
+                {
+                  name: "Sneha",
+                  university: "NIT Kurukshetra",
                   course: "Chemical Engineering",
                   quote:
-                    "Found amazing deals on textbooks through the exchange platform. The verification system makes it completely trustworthy.",
-                  icon: <BookText className="w-6 h-6 text-yellow-400" />,
+                    "Lab partner matching saved my grades! Found someone equally passionate about chemistry and we make a great team.",
+                  icon: <Beaker className="w-6 h-6 text-orange-400" />,
+                  delay: 0.6,
                   rating: 5,
                   avatar: "/placeholder.svg?height=60&width=60",
                 },
                 {
-                  name: "Neha",
-                  university: "NIT Trichy",
-                  course: "Civil Engineering",
+                  name: "Rahul",
+                  university: "VIT Vellore",
+                  course: "Mathematics",
                   quote:
-                    "The roommate matching algorithm is spot on! My roommate and I get along perfectly after being matched by CampusConnect.",
-                  icon: <Home className="w-6 h-6 text-pink-400" />,
+                    "The tutoring marketplace is incredible. I'm earning while helping juniors with calculus. Win-win situation!",
+                  icon: <Calculator className="w-6 h-6 text-pink-400" />,
+                  delay: 0.7,
                   rating: 5,
                   avatar: "/placeholder.svg?height=60&width=60",
                 },
                 {
-                  name: "Vikram",
-                  university: "DTU",
-                  course: "Computer Engineering",
+                  name: "Ananya",
+                  university: "Jadavpur University",
+                  course: "International Relations",
                   quote:
-                    "The note-sharing system has transformed how I study. Collaborative notes from top students in my class are a game-changer.",
-                  icon: <Notebook className="w-6 h-6 text-cyan-400" />,
+                    "Connected with exchange students from 5 different countries. My perspective on global politics has completely changed!",
+                  icon: <Globe className="w-6 h-6 text-cyan-400" />,
+                  delay: 0.8,
+                  rating: 5,
+                  avatar: "/placeholder.svg?height=60&width=60",
+                },
+                // Duplicate the array for seamless loop
+                {
+                  name: "Koshank",
+                  university: "Thapar University",
+                  course: "Computer Science",
+                  quote:
+                    "This app saved me so much time finding study groups and sharing notes. It's like LinkedIn but actually useful for students!",
+                  icon: <GraduationCap className="w-6 h-6 text-blue-400" />,
+                  delay: 0.1,
+                  rating: 5,
+                  avatar: "/placeholder.svg?height=60&width=60",
+                },
+                {
+                  name: "Shubham",
+                  university: "Thapar University",
+                  course: "Mechanical Engineering",
+                  quote:
+                    "I found my perfect roommate through CampusConnect. We're both night owls who love indie music - match made in heaven!",
+                  icon: <Building2 className="w-6 h-6 text-teal-400" />,
+                  delay: 0.2,
+                  rating: 5,
+                  avatar: "/placeholder.svg?height=60&width=60",
+                },
+                {
+                  name: "Kanwar",
+                  university: "Thapar University",
+                  course: "Electronics Engineering",
+                  quote:
+                    "The textbook exchange feature alone has saved me over ₹700 this semester. Why didn't this exist when I was a freshman?",
+                  icon: <BookOpen className="w-6 h-6 text-indigo-400" />,
+                  delay: 0.3,
+                  rating: 5,
+                  avatar: "/placeholder.svg?height=60&width=60",
+                },
+                {
+                  name: "Priya",
+                  university: "IIT Delhi",
+                  course: "Data Science",
+                  quote:
+                    "Finally found study partners who actually show up! The skill matching feature is brilliant - found people who complement my weaknesses.",
+                  icon: <Users className="w-6 h-6 text-purple-400" />,
+                  delay: 0.4,
+                  rating: 5,
+                  avatar: "/placeholder.svg?height=60&width=60",
+                },
+                {
+                  name: "Arjun",
+                  university: "BITS Pilani",
+                  course: "Software Engineering",
+                  quote:
+                    "The project collaboration feature helped me build an amazing portfolio. Got three internship offers thanks to connections made here!",
+                  icon: <Code className="w-6 h-6 text-green-400" />,
+                  delay: 0.5,
+                  rating: 5,
+                  avatar: "/placeholder.svg?height=60&width=60",
+                },
+                {
+                  name: "Sneha",
+                  university: "NIT Kurukshetra",
+                  course: "Chemical Engineering",
+                  quote:
+                    "Lab partner matching saved my grades! Found someone equally passionate about chemistry and we make a great team.",
+                  icon: <Beaker className="w-6 h-6 text-orange-400" />,
+                  delay: 0.6,
+                  rating: 5,
+                  avatar: "/placeholder.svg?height=60&width=60",
+                },
+                {
+                  name: "Rahul",
+                  university: "VIT Vellore",
+                  course: "Mathematics",
+                  quote:
+                    "The tutoring marketplace is incredible. I'm earning while helping juniors with calculus. Win-win situation!",
+                  icon: <Calculator className="w-6 h-6 text-pink-400" />,
+                  delay: 0.7,
+                  rating: 5,
+                  avatar: "/placeholder.svg?height=60&width=60",
+                },
+                {
+                  name: "Ananya",
+                  university: "Jadavpur University",
+                  course: "International Relations",
+                  quote:
+                    "Connected with exchange students from 5 different countries. My perspective on global politics has completely changed!",
+                  icon: <Globe className="w-6 h-6 text-cyan-400" />,
+                  delay: 0.8,
                   rating: 5,
                   avatar: "/placeholder.svg?height=60&width=60",
                 },
               ].map((testimonial, index) => (
                 <motion.div
                   key={index}
-                  className="w-full md:w-1/3 px-4 h-full flex-shrink-0"
-                  whileHover={{ scale: 1.02 }}
-                  transition={{ duration: 0.3 }}
+                  initial={{ opacity: 0, y: 50 }}
+                  whileInView={{ opacity: 1, y: 0 }}
+                  whileHover={{
+                    y: -10,
+                    scale: 1.02,
+                    transition: { duration: 0.2 },
+                  }}
+                  animate={{
+                    scale: activeTestimonial === index ? 1.05 : 1,
+                    borderColor:
+                      activeTestimonial === index
+                        ? "rgba(96, 165, 250, 0.5)"
+                        : "rgba(255, 255, 255, 0.1)",
+                  }}
+                  transition={{ duration: 0.6, delay: testimonial.delay }}
+                  viewport={{ once: true }}
+                  className="bg-gradient-to-br from-white/5 to-white/[0.02] backdrop-blur-md rounded-2xl p-6 border transition-all duration-300 relative overflow-hidden group min-w-[300px] max-w-[300px] flex-shrink-0"
+                  onMouseEnter={(e) => {
+                    setActiveTestimonial(index);
+                    e.currentTarget.closest(".flex").style.animationPlayState =
+                      "paused";
+                  }}
+                  onMouseLeave={(e) => {
+                    setActiveTestimonial(-1);
+                    e.currentTarget.closest(".flex").style.animationPlayState =
+                      "running";
+                  }}
                 >
-                  <div className="bg-gradient-to-br from-white/5 to-white/[0.02] backdrop-blur-md rounded-2xl p-8 border border-white/10 h-full flex flex-col">
+                  {activeTestimonial === index && (
+                    <motion.div
+                      className="absolute inset-0 bg-gradient-to-br from-blue-500/10 to-indigo-500/10"
+                      initial={{ opacity: 0 }}
+                      animate={{ opacity: 1 }}
+                      transition={{ duration: 0.3 }}
+                    />
+                  )}
+
+                  <div className="relative z-10">
                     <div className="flex items-center gap-4 mb-6">
                       <div className="relative">
                         <img
@@ -2020,17 +2164,21 @@ const Home = () => {
                       </div>
                     </div>
 
-                    <blockquote className="text-gray-300 italic text-lg leading-relaxed mb-6 flex-1">
+                    <blockquote className="text-gray-300 italic text-base leading-relaxed mb-4">
                       {`"${testimonial.quote}"`}
                     </blockquote>
 
                     <div className="flex items-center justify-between">
                       <div className="flex">
                         {[1, 2, 3, 4, 5].map((star) => (
-                          <Star
+                          <motion.div
                             key={star}
-                            className="w-5 h-5 text-yellow-400 fill-yellow-400"
-                          />
+                            initial={{ scale: 0 }}
+                            animate={{ scale: 1 }}
+                            transition={{ delay: star * 0.1 }}
+                          >
+                            <Star className="w-5 h-5 text-yellow-400 fill-yellow-400" />
+                          </motion.div>
                         ))}
                       </div>
                       <span className="text-xs text-gray-400">
@@ -2042,23 +2190,9 @@ const Home = () => {
               ))}
             </motion.div>
           </div>
-
-          {/* Manual Navigation Dots */}
-          <div className="flex justify-center gap-2 mt-8">
-            {[0, 1, 2].map((dot) => (
-              <button
-                key={dot}
-                onClick={() => {
-                  // You can implement manual navigation here if needed
-                }}
-                className={`w-3 h-3 rounded-full transition-all ${
-                  activeTestimonial === dot ? "bg-blue-400 w-6" : "bg-white/20"
-                }`}
-              />
-            ))}
-          </div>
         </div>
       </section>
+
       {/* Enhanced Stats & Waitlist Section */}
       <section className="py-24 px-6 md:px-24">
         <div className="max-w-6xl mx-auto text-center space-y-20">
@@ -2184,6 +2318,7 @@ const Home = () => {
           </motion.div>
         </div>
       </section>
+
       {/* Enhanced Final CTA */}
       <section className="py-24 px-6 md:px-24">
         <motion.div
@@ -2243,6 +2378,7 @@ const Home = () => {
           </div>
         </motion.div>
       </section>
+
       {/* Enhanced Footer */}
       <footer className="py-16 px-6 border-t border-white/10 relative overflow-hidden">
         <div className="absolute inset-0 bg-gradient-to-t from-black/20 to-transparent"></div>
